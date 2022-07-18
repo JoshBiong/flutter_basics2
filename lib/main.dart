@@ -26,7 +26,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentIndex = 0;
-  List<Widget> pages = const [Homepage(), ListItem()];
+  List<Widget> pages = const [Homepage(), ItemPage()];
 
   @override
   Widget build(BuildContext context) {

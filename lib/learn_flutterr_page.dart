@@ -57,7 +57,11 @@ class _LearnFlutterPageState extends State<LearnFlutterPage> {
               style: ElevatedButton.styleFrom(
                   backgroundColor:
                       _isSwitch ? Colors.amberAccent : Colors.blueAccent),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _isSwitch = !_isSwitch;
+                });
+              },
               child: const Text('Elevated Button'),
             ),
             const SizedBox(height: 10),
