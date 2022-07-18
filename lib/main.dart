@@ -26,6 +26,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentIndex = 0;
+  int count = 0;
   List<Widget> pages = const [Homepage(), ItemPage()];
 
   @override
@@ -36,9 +37,25 @@ class _RootPageState extends State<RootPage> {
           child: Text('Flutter Basics 2.0'),
         ),
       ),
-      body: pages[currentIndex],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '$count',
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          pages[currentIndex],
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            count++;
+          });
+        },
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: NavigationBar(
