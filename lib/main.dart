@@ -47,7 +47,7 @@ class _RootPageState extends State<RootPage> {
           const SizedBox(
             height: 20,
           ),
-          pages[currentIndex],
+          pages[currentIndex]
         ],
       ),
       floatingActionButton: FloatingActionButton(
