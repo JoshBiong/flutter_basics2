@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 
-int itemCount = 14;
+int intemCount = 15;
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ListItem extends StatelessWidget {
+  const ListItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: itemCount,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text('Item ${(index + 1)}'),
-            leading: const Icon(Icons.people_alt_outlined),
-            trailing: const Icon(Icons.accessibility_outlined),
-            onTap: () {
-              debugPrint('Item ${(index + 1)} is Selected');
-            },
-          );
-        });
+      itemCount: intemCount,
+      itemBuilder: (BuildContext cotent, int index) {
+        return ListTile(
+          title: Text('Item ${(index + 1)}'),
+          leading: const Icon(Icons.person_add_alt_1_sharp),
+          trailing: const Icon(Icons.settings),
+          onTap: () {
+            debugPrint('Item ${(index + 1)} selected');
+          },
+        );
+      },
+    );
   }
 }
