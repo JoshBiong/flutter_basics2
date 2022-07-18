@@ -1,106 +1,120 @@
 import 'package:flutter/material.dart';
 
-class LearFlutterPage extends StatefulWidget {
-  const LearFlutterPage({Key? key}) : super(key: key);
+class LearnFlutterPage extends StatefulWidget {
+  const LearnFlutterPage({super.key});
 
   @override
-  State<LearFlutterPage> createState() => _LearFlutterPageState();
+  State<LearnFlutterPage> createState() => _LearnFlutterPageState();
 }
 
-class _LearFlutterPageState extends State<LearFlutterPage> {
+class _LearnFlutterPageState extends State<LearnFlutterPage> {
   bool _isSwitch = false;
-  bool _isSelected = false;
-
+  bool? _isChecked = false;
+  bool tapp = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(Icons.arrow_back_ios),
+        title: const Center(
+          child: Text('Learn Flutter Page'),
         ),
-        title: const Text('Learn Flutter Page'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.info_outline),
+          ),
+        ],
       ),
-      body: Column(
-        children: [
-          Image.asset('images/image.png'),
-          const SizedBox(height: 10),
-          const Divider(
-            color: Colors.black,
-          ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            width: double.infinity,
-            color: _isSwitch ? Colors.black26 : Colors.amberAccent,
-            child: const Center(
-              child: Text(
-                'This is a text inside the container',
-                style: TextStyle(color: Colors.white),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset('images/image.png'),
+            const SizedBox(
+              height: 15.0,
+            ),
+            const Divider(
+              height: 1,
+              thickness: 2,
+              color: Colors.amber,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              color: Colors.blueAccent,
+              padding: const EdgeInsets.all(10),
+              width: double.infinity,
+              child: const Center(
+                child: Text(
+                  'Text inside the container',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: _isSwitch ? Colors.amber : Colors.blue),
-            onPressed: () {},
-            child: const Text('Elevated Button'),
-          ),
-          const SizedBox(height: 10),
-          OutlinedButton(
-            onPressed: () {},
-            child: const Text('Outlined Button'),
-          ),
-          const SizedBox(height: 10),
-          TextButton(
-            onPressed: () {},
-            child: const Text('Text Button'),
-          ),
-          const SizedBox(height: 10),
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              debugPrint('row ontap');
-            },
-            child: Container(
-              padding: const EdgeInsets.all(5.0),
-              color: Colors.black26,
+            const SizedBox(height: 10),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      _isSwitch ? Colors.amberAccent : Colors.blueAccent),
+              onPressed: () {},
+              child: const Text('Elevated Button'),
+            ),
+            const SizedBox(height: 10),
+            OutlinedButton(
+              onPressed: () {},
+              child: const Text('OutlinedButton'),
+            ),
+            const SizedBox(height: 10),
+            TextButton(
+              onPressed: () {},
+              child: const Text("TextButton"),
+            ),
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                debugPrint('Row is Clicked');
+              },
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Icon(Icons.favorite),
-                  Text(
-                    'Text inside the row',
-                  ),
-                  Icon(Icons.favorite),
-                ],
-              ),
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Icon(Icons.home),
+                    Text('Text inside the Row'),
+                    Icon(Icons.home),
+                  ]),
             ),
-          ),
-          Switch(
+            Switch(
               value: _isSwitch,
               onChanged: (bool newBool) {
                 setState(() {
                   _isSwitch = newBool;
                 });
-              }),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _isSelected = !_isSelected;
-              });
-            },
-            child: AnimatedContainer(
-                height: _isSelected ? 20 : 50,
-                width: _isSelected ? 50 : 30,
-                color: _isSelected ? Colors.amberAccent : Colors.green,
-                duration: const Duration(milliseconds: 800)),
-          )
-        ],
+              },
+            ),
+            Checkbox(
+                value: _isChecked,
+                onChanged: (bool? newBool) {
+                  setState(() {
+                    _isChecked = newBool;
+                  });
+                }),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  tapp = !tapp;
+                });
+              },
+              child: AnimatedContainer(
+                  color: tapp ? Colors.black : Colors.blueGrey,
+                  height: tapp ? 300 : 20,
+                  width: tapp ? 40 : 200,
+                  duration: const Duration(milliseconds: 500)),
+            ),
+            const SizedBox(
+              height: 50,
+            )
+          ],
+        ),
       ),
     );
   }

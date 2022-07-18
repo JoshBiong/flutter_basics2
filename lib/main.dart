@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basics2/home_page.dart';
+import 'package:flutter_basics2/profile_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -25,6 +26,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentIndex = 0;
+  List<Widget> pages = const [Homepage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class _RootPageState extends State<RootPage> {
           child: Text('Flutter Basics 2.0'),
         ),
       ),
-      body: const Homepage(),
+      body: pages[currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),
